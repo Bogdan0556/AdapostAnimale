@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salvați-l pe Puffi | Asociație Protecția Animalelor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1A4B7C;    /* Albastrul din logo - inspiră încredere și stabilitate */
+            --secondary: #F4B41A;  /* Galbenul din banner/lăbuțe - cald și primitor */
+            --accent: #D32F2F;     /* Roșul din inimioară - perfect pentru apelul la donații */
+            --bg-color: #F9F9F9;   /* Un fundal foarte curat, aproape alb */
+            --text-dark: #2B2B2B;  /* Un gri foarte închis pentru text, mai ușor de citit decât negrul pur */
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3 { font-family: 'Outfit', sans-serif; }
+
+        /* NAVIGARE PREMIUM */
+        .navbar {
+            background-color: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        .logo span { color: var(--accent); }
+
+        .nav-links { list-style: none; display: flex; gap: 20px; align-items: center; }
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .nav-links li a:hover { color: var(--primary); }
+        
+        .btn-donate-nav {
+            background-color: var(--accent);
+            color: var(--white) !important;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+        }
+        .btn-donate-nav:hover { background-color: #d65a3d; }
+
+        /* HERO SECTION EMOȚIONANT */
+        .hero {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 91, 80, 0.7), rgba(18, 91, 80, 0.4)), 
+                        url('https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            color: var(--white);
+            max-width: 800px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.2; }
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; font-weight: 400; }
+
+        .btn-main {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--text-dark);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 800;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        /* GRID ACȚIUNI RAPIDE (Formular 230, Donații, Sponsori) */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 60px 5%;
+            margin-top: 40px; /* Am modificat aici pentru a coborî casetele */
+        }
+
+        .action-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .action-card:hover { transform: translateY(-10px); }
+        .action-card i { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+        .action-card h3 { margin-bottom: 15px; font-size: 1.5rem; }
+        .action-card p { color: #666; margin-bottom: 20px; font-size: 0.95rem; }
+        
+        .link-arrow {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex; /* Folosim inline-flex pentru centrare perfectă cu textul */
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Regula nouă doar pentru iconița-săgeată */
+        .link-arrow i {
+            font-size: 1.1rem !important; /* Mărime proporțională cu textul */
+            margin-bottom: 0 !important; /* Anulăm spațiul gol de dedesubt */
+        }
+
+        /* SECȚIUNE SIMPLĂ INFORMATIVĂ */
+        .info-section {
+            padding: 80px 5%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .info-content { flex: 1; }
+        .info-content h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+        .info-content p { margin-bottom: 15px; color: #555; }
+        
+        .info-image { flex: 1; }
+        .info-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 15px; padding: 15px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 2.2rem; }
+            .quick-actions { margin-top: 20px; }
+            .info-section { flex-direction: column; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* FOOTER MODERN */
+        .site-footer {
+            background-color: var(--primary); /* Albastrul din logo */
+            color: var(--white);
+            padding: 70px 5% 20px;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 40px;
+        }
+
+        .footer-about .footer-logo {
+            height: 70px;
+            margin-bottom: 20px;
+            background-color: var(--white); /* Fundal alb pentru logo ca să iasă în evidență pe albastru */
+            padding: 5px 15px;
+            border-radius: 10px;
+        }
+
+        .footer-about p {
+            color: #d1e2f3;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            max-width: 400px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-socials a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-socials a:hover {
+            background-color: var(--secondary); /* Devine galben la hover */
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-heading {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--secondary); /* Titlurile sunt pe galben */
+        }
+
+        .footer-links list-style {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #d1e2f3;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-links a i {
+            font-size: 0.8rem;
+            color: var(--accent); /* Săgețile mici sunt roșii */
+        }
+
+        .footer-contact p {
+            color: #d1e2f3;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            color: #8faecf;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: #8faecf;
+            text-decoration: underline;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--white);
+        }
+
+        /* RESPONSIVE PENTRU FOOTER */
+        @media (max-width: 992px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .footer-about .footer-logo {
+                margin: 0 auto 20px;
+                display: block;
+            }
+            .footer-about p {
+                text-align: center;
+                margin: 0 auto 20px;
+            }
+            .footer-socials {
+                justify-content: center;
+            }
+            .footer-heading {
+                text-align: center;
+                margin-top: 20px;
+            }
+            .footer-links, .footer-contact {
+                text-align: center;
+            }
+            .footer-links a, .footer-contact p {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo">
+          <img src="imagine_puffi.png" alt="Logo Salvați-l pe Puffi" style="height: 60px; width: auto; object-fit: contain;">
+       </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Acasă</a></li>
+            <li><a href="despre-noi.html">Despre Noi</a></li>
+            <li><a href="sterilizari.html">Sterilizări</a></li>
+            <li><a href="sponsori.html">Sponsori</a></li>
+            <li><a href="donatii.html" class="btn-donate-nav">Donații / Formular 230</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Oferă o a doua șansă.<br>Nu abandona!</h1>
+            <p>Construim adăpostul, tratăm cu respect fiecare suflet și prevenim abandonul prin campanii de sterilizare gratuită. Implică-te și tu în povestea noastră!</p>
+            <a href="despre-noi.html" class="btn-main">Vezi cum poți ajuta</a>
+        </div> 
+    </header>
+
+    <section class="quick-actions">
+        <div class="action-card">
+            <i class="fas fa-heart"></i>
+            <h3>Donații Bancare</h3>
+            <p>Fiecare contribuție ne ajută să cumpărăm hrană, materiale pentru adăpost și să acoperim costurile medicale urgente.</p>
+            <a href="donatii.html" class="link-arrow">Datele asociației <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="action-card">
+            <i class="fas fa-file-signature"></i>
+            <h3>Formularul 230</h3>
+            <p>Redirecționează 3.5% din impozitul pe venit către asociația noastră. Este 100% gratuit pentru tine, dar vital pentru ei!</p>
+            <a href="donatii.html" class="link-arrow">Descarcă Formularul <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="action-card">
+            <i class="fas fa-handshake"></i>
+            <h3>Sponsori & Parteneri</h3>
+            <p>Le mulțumim companiilor și oamenilor de bine care ne susțin constant în construirea unui viitor mai bun pentru animale.</p>
+            <a href="sponsori.html" class="link-arrow">Vezi partenerii noștri <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="info-image">
+            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Câine salvat">
+        </div>
+        <div class="info-content">
+            <h2>Evoluția Noastră</h2>
+            <p>Povestea noastră a început din compasiune și din dorința sinceră de a oferi o șansă reală câinilor fără stăpân. Cu pași mici, dar cu multă determinare, am început să construim propriul adăpost.</p>
+            <p>Astăzi visul de a le oferi un loc sigur și primitor prinde contur zi de zi. Descoperă povestea noastră completă și află cum poți face parte din ea.</p>
+            <a href="#" class="link-arrow" style="justify-content: flex-start; margin-top: 15px;">Citește toată istoria <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+<footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <img src="imagine_puffi.png" alt="Salvați-l pe Puffi Logo" class="footer-logo">
+                <p>Misiunea noastră este să oferim o șansă reală la o viață mai bună animalelor abandonate. Construim, tratăm, sterilizăm și iubim necondiționat.</p>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/share/1FdoKCd3ua/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3 class="footer-heading">Linkuri Utile</h3>
+                <ul style="list-style: none;">
+                    <li><a href="despre-noi.html"><i class="fas fa-chevron-right"></i> Despre Noi</a></li>
+                    <li><a href="sterilizari.html"><i class="fas fa-chevron-right"></i> Campanii Sterilizare</a></li>
+                    <li><a href="sponsori.html"><i class="fas fa-chevron-right"></i> Sponsori & Parteneri</a></li>
+                    <li><a href="donatii.html"><i class="fas fa-chevron-right"></i> Redirecționează 3.5%</a></li>
+                    <li><a href="donatii.html"><i class="fas fa-chevron-right"></i> Fă o Donație</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3 class="footer-heading">Contactează-ne</h3>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i> 
+                    <span>Județul Olt, România<br> Comuna Priseaca, Sat Buicești, Strada Principala</span>
+                </p>
+                <p>
+                    <i class="fas fa-envelope"></i> 
+                    <span>salvatipepuffi@gmail.com</span>
+                </p>
+                <p>
+                    <i class="fas fa-phone-alt"></i> 
+                    <span>+40 (761) 668 909</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Asociația Salvați-l pe Puffi. Toate drepturile rezervate</p>
+        </div>
+    </footer>
+
+
+</body>
+</html>
