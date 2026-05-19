@@ -6,18 +6,23 @@
     <title>Sterilizări Gratuite | Asociația Salvați-l pe Puffi</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
     <style>
         :root {
             --primary: #1A4B7C;    /* Albastru */
             --secondary: #F4B41A;  /* Galben */
             --accent: #D32F2F;     /* Roșu */
-            --bg-color: #F9F9F9;   
+            --bg-color: #F9F9F9;
             --text-dark: #2B2B2B;
             --white: #FFFFFF;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            overflow-x: hidden; /* Taie din rădăcină orice element care încearcă să iasă din ecran în lateral */
+            width: 100%;
+        }
 
         body {
             font-family: 'Nunito', sans-serif;
@@ -40,7 +45,8 @@
             top: 0;
             z-index: 1000;
         }
-        .logo img { height: 50px; width: auto; object-fit: contain; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; display: block; }
+        .logo img { height: 60px; width: auto; object-fit: contain; } /* Dimensiune ca în index */
 
         .nav-links { list-style: none; display: flex; gap: 20px; align-items: center; }
         .nav-links li a {
@@ -51,7 +57,7 @@
             transition: color 0.3s;
         }
         .nav-links li a:hover, .nav-links li a.active { color: var(--primary); }
-        
+
         .btn-donate-nav {
             background-color: var(--accent);
             color: var(--white) !important;
@@ -59,11 +65,12 @@
             border-radius: 30px;
             font-weight: 700;
         }
+        .btn-donate-nav:hover { background-color: #d65a3d; }
 
-        /* HEADER PAGINĂ (REPARAT) */
+        /* HEADER PAGINĂ */
         .page-header {
-            background: linear-gradient(rgba(26, 75, 124, 0.85), rgba(26, 75, 124, 0.85)), 
-                        url('https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+            background: linear-gradient(rgba(26, 75, 124, 0.85), rgba(26, 75, 124, 0.85)),
+            url('https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
             padding: 100px 20px;
             text-align: center;
             color: var(--white);
@@ -108,7 +115,7 @@
         }
         .gallery-section h2 { color: var(--primary); margin-bottom: 15px; font-size: 2.2rem; }
         .gallery-section p.subtitle { color: #666; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; font-size: 1.1rem; }
-        
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -130,167 +137,196 @@
         }
         .gallery-item:hover img { transform: scale(1.1); }
 
-        /* FOOTER */
-        .site-footer { background-color: var(--primary); color: var(--white); padding: 70px 5% 20px; }
-        .footer-container { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 40px; }
+        /* FOOTER MODERN */
+        .site-footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 70px 5% 20px;
+            margin-top: 60px;
+        }
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 40px;
+        }
         .footer-about .footer-logo {
-            height: 60px;
+            height: 70px;
             margin-bottom: 20px;
             background-color: var(--white);
             padding: 5px 15px;
             border-radius: 10px;
         }
-        .footer-about p { color: #d1e2f3; font-size: 0.95rem; margin-bottom: 20px; max-width: 400px; }
+        .footer-about p {
+            color: #d1e2f3;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            max-width: 400px;
+        }
+        .footer-socials { display: flex; gap: 15px; }
         .footer-socials a {
             display: inline-flex; align-items: center; justify-content: center;
             width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1);
             color: var(--white); border-radius: 50%; text-decoration: none; transition: all 0.3s;
         }
-        .footer-socials a:hover { background-color: var(--secondary); color: var(--primary); }
-        .footer-heading { font-family: 'Outfit', sans-serif; font-size: 1.2rem; margin-bottom: 20px; color: var(--secondary); }
-        .footer-links li { margin-bottom: 12px; list-style: none; }
+        .footer-socials a:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        .footer-heading {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
         .footer-links a { color: #d1e2f3; text-decoration: none; transition: color 0.3s; display: flex; align-items: center; gap: 8px; }
         .footer-links a:hover { color: var(--secondary); }
-        
-        
-        .footer-links a i { color: var(--accent); }
-        
+        .footer-links a i { font-size: 0.8rem; color: var(--accent); }
+
         .footer-contact p { color: #d1e2f3; margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; }
         .footer-contact i { color: var(--secondary); margin-top: 5px; }
         .footer-bottom { text-align: center; padding-top: 20px; color: #8faecf; font-size: 0.85rem; }
         .footer-bottom a { color: #8faecf; text-decoration: underline; }
+        .footer-bottom a:hover { color: var(--white); }
 
-        /* REPARAȚIE SCROLL ORIZONTAL ȘI SUPRAPUNERI PE MOBIL */
-        html, body {
-            overflow-x: hidden; /* Taie din rădăcină orice element care încearcă să iasă din ecran în lateral */
-            width: 100%;
+        /* ========================================================
+           RESPONSIVE COPIAT IDENTIC DE LA INDEX.HTML + REPARAȚIE POZĂ
+           ======================================================== */
+        @media (max-width: 992px) {
+            /* Reparație poza cu ambulanțele să nu iasă din ecran */
+            .collab-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+                gap: 30px;
+            }
+            .collab-map { width: 100%; height: 300px; }
+            .collab-content li { text-align: left; }
+
+            /* Footer grid */
+            .footer-container { grid-template-columns: 1fr 1fr; }
         }
 
-        /* FORȚĂM MENIUL SĂ FIE PE VERTICALĂ PE TELEFON (GLONȚ) */
-        @media (max-width: 850px) {
-            .navbar {
-                flex-direction: column !important;
-                padding: 15px !important;
-                gap: 15px !important;
-            }
-            .nav-links {
-                flex-direction: column !important;
-                width: 100% !important;
-                gap: 12px !important;
-                padding: 0 !important;
-            }
-            .nav-links li {
-                width: 100% !important;
-                text-align: center !important;
-            }
-            .nav-links li a {
-                display: block !important;
-                padding: 5px 0 !important;
-            }
-            .btn-donate-nav {
-                display: inline-block !important;
-                white-space: normal !important;
-                margin-top: 5px !important;
-            }
+        @media (max-width: 768px) {
+            /* Meniul așezat exact ca la index.html */
+            .navbar { flex-direction: column; gap: 15px; padding: 15px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+
+            .page-header h1 { font-size: 2.2rem; }
+
+            /* Footer așezat exact ca la index.html */
+            .footer-container { grid-template-columns: 1fr; }
+            .footer-about .footer-logo { margin: 0 auto 20px; display: block; }
+            .footer-about p { text-align: center; margin: 0 auto 20px; }
+            .footer-socials { justify-content: center; }
+            .footer-heading { text-align: center; margin-top: 20px; }
+            .footer-links, .footer-contact { text-align: center; }
+            .footer-links a, .footer-contact p { justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="index.html" class="logo">
-            <img src="imagine_puffi.png" alt="Salvați-l pe Puffi">
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Acasă</a></li>
-            <li><a href="despre-noi.html">Despre Noi</a></li>
-            <li><a href="sterilizari.html" class="active">Sterilizări</a></li>
-            <li><a href="sponsori.html">Sponsori</a></li>
-            <li><a href="donatii.html" class="btn-donate-nav">Donații / Formular 230</a></li>
+<nav class="navbar">
+    <a href="index.html" class="logo">
+        <img src="imagine_puffi.png" alt="Salvați-l pe Puffi">
+    </a>
+    <ul class="nav-links">
+        <li><a href="index.html">Acasă</a></li>
+        <li><a href="despre-noi.html">Despre Noi</a></li>
+        <li><a href="sterilizari.html" class="active">Sterilizări</a></li>
+        <li><a href="sponsori.html">Sponsori</a></li>
+        <li><a href="donatii.html" class="btn-donate-nav">Donații / Formular 230</a></li>
+    </ul>
+</nav>
+
+<header class="page-header">
+    <h1>Campanii de Sterilizare</h1>
+    <p>Prevenția este singura soluție reală pentru stoparea abandonului. Împreună, putem oferi o viață mai bună animalelor fără stăpân.</p>
+</header>
+
+<section class="intro-section">
+    <h2>De ce este vitală sterilizarea?</h2>
+    <p>Singura metodă umană și eficientă de a reduce numărul animalelor de pe străzi este controlul reproducerii. O singură femelă nesterilizată poate genera, direct și indirect, mii de pui nedoriți în doar câțiva ani.</p>
+    <p>Prin campaniile noastre, ne dorim să sprijinim comunitatea și să oferim acces la servicii medicale de specialitate celor care nu își permit costurile acestor intervenții.</p>
+</section>
+
+<section class="collab-section">
+    <div class="collab-content">
+        <h3>Locație & Colaborări</h3>
+        <ul>
+            <li><i class="fas fa-handshake"></i> <span>Mândria și eforturile noastre se concentrează pe colaborarea strânsă cu cei de la <strong>Adăpostul Smeura din Argeș</strong>, alături de care organizăm aceste campanii esențiale.</span></li>
+            <li><i class="fas fa-map-marker-alt"></i> <span>Campaniile mobile de sterilizare gratuită se desfășoară pe raza județului Olt, oferind sprijin direct comunităților locale.</span></li>
+            <li><i class="fas fa-calendar-alt"></i> <span>Urmăriți pagina noastră de Facebook pentru anunțarea următoarelor date disponibile și detalii despre programări.</span></li>
         </ul>
-    </nav>
+    </div>
+    <div class="collab-map">
+        <img src="s1b.jpeg" alt="masini_sterilizat" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+</section>
 
-    <header class="page-header">
-        <h1>Campanii de Sterilizare</h1>
-        <p>Prevenția este singura soluție reală pentru stoparea abandonului. Împreună, putem oferi o viață mai bună animalelor fără stăpân.</p>
-    </header>
+<section class="gallery-section">
+    <h2>Galerie Foto Campanii</h2>
+    <p class="subtitle">Imaginile publicate pe această pagină reprezintă realizările de la <strong>a 11-a campanie de sterilizare</strong> organizată alături de echipa de la Adăpostul Smeura Argeș, cărora le mulțumim din suflet pentru sprijinul acordat sufletelor fără stăpân.</p>
 
-    <section class="intro-section">
-        <h2>De ce este vitală sterilizarea?</h2>
-        <p>Singura metodă umană și eficientă de a reduce numărul animalelor de pe străzi este controlul reproducerii. O singură femelă nesterilizată poate genera, direct și indirect, mii de pui nedoriți în doar câțiva ani.</p>
-        <p>Prin campaniile noastre, ne dorim să sprijinim comunitatea și să oferim acces la servicii medicale de specialitate celor care nu își permit costurile acestor intervenții.</p>
-    </section>
+    <div class="gallery-grid">
+        <div class="gallery-item"><img src="s2.jpeg" alt="Campanie Sterilizare"></div>
+        <div class="gallery-item"><img src="s3.jpeg" alt="Campanie Sterilizare"></div>
+        <div class="gallery-item"><img src="s4.jpeg" alt="Campanie Sterilizare"></div>
+        <div class="gallery-item"><img src="s5.jpeg" alt="Campanie Sterilizare"></div>
+        <div class="gallery-item"><img src="s6.jpeg" alt="Campanie Sterilizare"></div>
+        <div class="gallery-item"><img src="s7.jpeg" alt="Campanie Sterilizare"></div>
+    </div>
+</section>
 
-    <section class="collab-section">
-        <div class="collab-content">
-            <h3>Locație & Colaborări</h3>
-            <ul>
-                <li><i class="fas fa-handshake"></i> <span>Mândria și eforturile noastre se concentrează pe colaborarea strânsă cu cei de la <strong>Adăpostul Smeura din Argeș</strong>, alături de care organizăm aceste campanii esențiale.</span></li>
-                <li><i class="fas fa-map-marker-alt"></i> <span>Campaniile mobile de sterilizare gratuită se desfășoară pe raza județului Olt, oferind sprijin direct comunităților locale.</span></li>
-                <li><i class="fas fa-calendar-alt"></i> <span>Urmăriți pagina noastră de Facebook pentru anunțarea următoarelor date disponibile și detalii despre programări.</span></li>
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <img src="imagine_puffi.png" alt="Salvați-l pe Puffi Logo" class="footer-logo">
+            <p>Misiunea noastră este să oferim o șansă reală la o viață mai bună animalelor abandonate. Construim, tratăm, sterilizăm și iubim necondiționat.</p>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/share/1FdoKCd3ua/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h3 class="footer-heading">Linkuri Utile</h3>
+            <ul style="list-style: none;">
+                <li><a href="index.html"><i class="fas fa-chevron-right"></i> Acasă</a></li>
+                <li><a href="despre-noi.html"><i class="fas fa-chevron-right"></i> Despre Noi</a></li>
+                <li><a href="sterilizari.html"><i class="fas fa-chevron-right"></i> Campanii Sterilizare</a></li>
+                <li><a href="sponsori.html"><i class="fas fa-chevron-right"></i> Sponsori & Parteneri</a></li>
+                <li><a href="donatii.html"><i class="fas fa-chevron-right"></i> Fă o Donație</a></li>
             </ul>
         </div>
-        <div class="collab-map">
-            <img src="s1b.jpeg" alt="masini_sterilizat" style="width: 100%; height: 100%; object-fit: cover;">
+
+        <div class="footer-contact">
+            <h3 class="footer-heading">Contactează-ne</h3>
+            <p>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Județul Olt, România<br> Comuna Priseaca, Sat Buicești, Strada Principala</span>
+            </p>
+            <p>
+                <i class="fas fa-envelope"></i>
+                <span>salvatipepuffi@gmail.com</span>
+            </p>
+            <p>
+                <i class="fas fa-phone-alt"></i>
+                <span>+40 (761) 668 909</span>
+            </p>
         </div>
-    </section>
+    </div>
 
-    <section class="gallery-section">
-        <h2>Galerie Foto Campanii</h2>
-        <p class="subtitle">Imaginile publicate pe această pagină reprezintă realizările de la <strong>a 11-a campanie de sterilizare</strong> organizată alături de echipa de la Adăpostul Smeura Argeș, cărora le mulțumim din suflet pentru sprijinul acordat sufletelor fără stăpân.</p>
-        
-        <div class="gallery-grid">
-            <div class="gallery-item"><img src="s2.jpeg" alt="Campanie Sterilizare"></div>
-            <div class="gallery-item"><img src="s3.jpeg" alt="Campanie Sterilizare"></div>
-            <div class="gallery-item"><img src="s4.jpeg" alt="Campanie Sterilizare"></div>
-            <div class="gallery-item"><img src="s5.jpeg" alt="Campanie Sterilizare"></div>
-            <div class="gallery-item"><img src="s6.jpeg" alt="Campanie Sterilizare"></div>
-            <div class="gallery-item"><img src="s7.jpeg" alt="Campanie Sterilizare"></div>
-        </div>
-    </section>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-about">
-                <img src="imagine_puffi.png" alt="Salvați-l pe Puffi Logo" class="footer-logo">
-                <p>Misiunea noastră este să oferim o șansă reală la o viață mai bună animalelor abandonate. Construim, tratăm, sterilizăm și iubim necondiționat.</p>
-                <div class="footer-socials">
-                    <a href="https://www.facebook.com/share/1FdoKCd3ua/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-links">
-                <h3 class="footer-heading">Linkuri Utile</h3>
-                <ul style="list-style: none;">
-                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Acasă</a></li>
-                    <li><a href="despre-noi.html"><i class="fas fa-chevron-right"></i> Despre Noi</a></li>
-                    <li><a href="sterilizari.html"><i class="fas fa-chevron-right"></i> Campanii Sterilizare</a></li>
-                    <li><a href="sponsori.html"><i class="fas fa-chevron-right"></i> Sponsori & Parteneri</a></li>
-                    <li><a href="donatii.html"><i class="fas fa-chevron-right"></i> Fă o Donație</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-contact">
-                <h3 class="footer-heading">Contactează-ne</h3>
-                <p>
-                    <i class="fas fa-map-marker-alt"></i> 
-                    <span>Județul Olt, România<br> Comuna Priseaca, Sat Buicești, Strada Principala</span>
-                </p>
-                <p>
-                    <i class="fas fa-envelope"></i> 
-                    <span>salvatipepuffi@gmail.com</span>
-                </p>
-                <p>
-                    <i class="fas fa-phone-alt"></i> 
-                    <span>+40 (761) 668 909</span>
-                </p>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2026 Asociația Salvați-l pe Puffi. Toate drepturile rezervate</p>
-        </div>
-    </footer>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Asociația Salvați-l pe Puffi. Toate drepturile rezervate</p>
+    </div>
+</footer>
 
 </body>
 </html>
