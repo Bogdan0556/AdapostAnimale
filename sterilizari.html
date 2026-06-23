@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sterilizări Gratuite | Asociația Salvați-l pe Puffi</title>
     <link rel="icon" type="image/png" href="logo1.png">
+    
+    <!-- SEO: Descriere și Cuvinte Cheie -->
+    <meta name="description" content="Asociația Salvați-l pe Puffi luptă pentru binele animalelor fără stăpân din județul Olt, Slatina și Priseaca. Află cum poți ajuta prin donații, adopții sau campanii de sterilizare.">
+    <meta name="keywords" content="Priseaca, asociația puffi, asociatia puffi, puffi, asocatia puffi, slatina, adăpost animale Olt, adăpost Priseaca, adăpost slatina, Olt, asociatie animale, donatii caini, sterilizari gratuite caini, formularul 230, salvati-l pe puffi, protectia animalelor, ONG animale, adoptii catei">
+
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -21,7 +26,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html, body {
-            overflow-x: hidden; /* Taie din rădăcină orice element care încearcă să iasă din ecran în lateral */
+            overflow-x: hidden;
             width: 100%;
         }
 
@@ -47,7 +52,7 @@
             z-index: 1000;
         }
         .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; display: block; }
-        .logo img { height: 60px; width: auto; object-fit: contain; } /* Dimensiune ca în index */
+        .logo img { height: 60px; width: auto; object-fit: contain; }
 
         .nav-links { list-style: none; display: flex; gap: 20px; align-items: center; }
         .nav-links li a {
@@ -79,10 +84,106 @@
         .page-header h1 { font-size: 3rem; margin-bottom: 15px; }
         .page-header p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
 
+        /* =========================================
+           SECȚIUNE NOUĂ: CHENAR CAMPANIE POSTER
+           ========================================= */
+        .campanie-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 60px auto 20px;
+            padding: 20px;
+            background-color: #f9fdfa;
+            border: 2px solid #e0e8e3;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .campanie-imagine {
+            flex: 1 1 400px;
+        }
+
+        .campanie-imagine img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .campanie-text {
+            flex: 1 1 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .campanie-text h2 {
+            color: var(--primary);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .detalii-esentiale {
+            background-color: #e8f5ed;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2e7d53;
+        }
+
+        .detalii-esentiale p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .lista-beneficii {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 25px;
+        }
+
+        .lista-beneficii li {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .lista-beneficii i {
+            color: #2e7d53;
+            margin-right: 10px;
+        }
+
+        .call-to-action-box {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #d1e3d8;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .btn-suna {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white !important;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 12px 25px;
+            border-radius: 30px;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .btn-suna:hover {
+            background-color: #b71c1c;
+        }
+
         /* INTRODUCERE */
         .intro-section {
             max-width: 1000px;
-            margin: 80px auto;
+            margin: 60px auto;
             padding: 0 20px;
             text-align: center;
         }
@@ -193,11 +294,8 @@
         .footer-bottom a { color: #8faecf; text-decoration: underline; }
         .footer-bottom a:hover { color: var(--white); }
 
-        /* ========================================================
-           RESPONSIVE COPIAT IDENTIC DE LA INDEX.HTML + REPARAȚIE POZĂ
-           ======================================================== */
+        /* RESPONSIVE */
         @media (max-width: 992px) {
-            /* Reparație poza cu ambulanțele să nu iasă din ecran */
             .collab-section {
                 flex-direction: column;
                 text-align: center;
@@ -206,19 +304,24 @@
             }
             .collab-map { width: 100%; height: 300px; }
             .collab-content li { text-align: left; }
-
-            /* Footer grid */
             .footer-container { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
-            /* Meniul așezat exact ca la index.html */
             .navbar { flex-direction: column; gap: 15px; padding: 15px; }
             .nav-links { flex-wrap: wrap; justify-content: center; }
-
             .page-header h1 { font-size: 2.2rem; }
+            
+            /* Ajustări chenar poster mobil */
+            .campanie-container {
+                flex-direction: column;
+                padding: 15px;
+                margin: 40px 15px 20px;
+            }
+            .campanie-text h2 {
+                font-size: 24px;
+            }
 
-            /* Footer așezat exact ca la index.html */
             .footer-container { grid-template-columns: 1fr; }
             .footer-about .footer-logo { margin: 0 auto 20px; display: block; }
             .footer-about p { text-align: center; margin: 0 auto 20px; }
@@ -248,6 +351,42 @@
     <h1>Campanii de Sterilizare</h1>
     <p>Prevenția este singura soluție reală pentru stoparea abandonului. Împreună, putem oferi o viață mai bună animalelor fără stăpân.</p>
 </header>
+
+<!-- =====================================
+     AICI ESTE NOUA SECȚIUNE DE CAMPANIE 
+     ===================================== -->
+<section class="campanie-section">
+    <div class="campanie-container">
+        <!-- Partea stângă: Posterul -->
+        <div class="campanie-imagine">
+            <img src="postercampanie.jpeg" alt="Afiș Campanie Sterilizări Gratuite Priseaca 3 Iulie 2026">
+        </div>
+
+        <!-- Partea dreaptă: Text și Informații extrase -->
+        <div class="campanie-text">
+            <h2>Campanie de Sterilizări Gratuite!</h2>
+            
+            <div class="detalii-esentiale">
+                <p><i class="fas fa-calendar-check"></i> <strong>Data:</strong> 03 Iulie 2026</p>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Locația:</strong> Comuna Priseaca, Olt</p>
+            </div>
+
+            <p><strong>Un gest mic pentru tine, o viață întreagă pentru ei!</strong></p>
+            <p>Asociația Salvați-l pe Puffi, în parteneriat cu Primăria Priseaca și Adăpostul Smeura, organizează o nouă campanie de sterilizare. Sterilizarea este cea mai eficientă soluție pentru o viață sănătoasă și pentru a preveni înmulțirea necontrolată.</p>
+            
+            <ul class="lista-beneficii">
+                <li><i class="fas fa-heartbeat"></i> Previne bolile grave.</li>
+                <li><i class="fas fa-paw"></i> Previne abandonul și suferința.</li>
+                <li><i class="fas fa-shield-dog"></i> Reduce comportamentele agresive.</li>
+            </ul>
+
+            <div class="call-to-action-box">
+                <p><strong>Programează-te din timp! Locurile sunt limitate.</strong></p>
+                <a href="tel:0761668909" class="btn-suna"><i class="fas fa-phone-alt"></i> Sună acum: 0761 668 909</a>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="intro-section">
     <h2>De ce este vitală sterilizarea?</h2>
