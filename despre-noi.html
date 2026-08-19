@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Despre Noi - Evoluție | Asociația Salvați-l pe Puffi</title>
     <link rel="icon" type="image/png" href="logo1.png">
+    
+    <!-- SEO: Descriere și Cuvinte Cheie -->
+    <meta name="description" content="Află povestea Asociației Salvați-l pe Puffi. Evoluția adăpostului nostru din Priseaca, județul Olt, și poveștile de succes ale cățeilor adoptați.">
+    <meta name="keywords" content="Priseaca, asociația puffi, asociatia puffi, puffi, asocatia puffi, slatina, adăpost animale Olt, adăpost Priseaca, adăpost slatina, Olt, asociatie animale, donatii caini, sterilizari gratuite caini, formularul 230, adoptii catei">
+
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -25,6 +30,7 @@
             background-color: var(--bg-color);
             color: var(--text-dark);
             line-height: 1.7;
+            overflow-x: hidden;
         }
 
         h1, h2, h3 { font-family: 'Outfit', sans-serif; }
@@ -73,7 +79,7 @@
         .page-header h1 { font-size: 2.8rem; margin-bottom: 10px; }
         .page-header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
 
-        /* SECȚIUNEA POVESTEA NOASTRĂ - REVISTĂ */
+        /* SECȚIUNEA POVESTEA NOASTRĂ */
         .story-wrapper {
             max-width: 1200px;
             margin: 80px auto;
@@ -118,6 +124,84 @@
             padding: 20px;
             border-radius: 10px;
             margin-top: 25px;
+        }
+
+        /* =========================================
+           SECȚIUNE NOUĂ: POVEȘTI DE SUCCES (POSTĂRI)
+           ========================================= */
+        .success-stories {
+            background-color: #eef3f8; /* Un fundal ușor albăstrui pentru a delimita secțiunea */
+            padding: 60px 5%;
+            text-align: center;
+        }
+        .success-stories > h2 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .post-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            max-width: 1000px;
+            margin: 0 auto 30px;
+            display: flex;
+            text-align: left;
+        }
+
+        .post-image {
+            flex: 1 1 50%;
+        }
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .post-content {
+            flex: 1 1 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .post-content h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .post-content p {
+            color: #555;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+
+        .post-highlight-box {
+            background-color: #fdf5e6;
+            border-left: 4px solid var(--secondary);
+            padding: 15px;
+            border-radius: 0 10px 10px 0;
+            margin-top: 15px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .post-highlight-box i {
+            color: var(--secondary);
+            font-size: 1.8rem;
+        }
+
+        .post-highlight-box p {
+            margin-bottom: 0;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1rem;
         }
 
         /* SECȚIUNEA EVOLUȚIE ȘANTIER (GALERIE) */
@@ -168,10 +252,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 40px;
         }
-        .footer-about .footer-logo {
-            height: 70px;
-            margin-bottom: 20px;
-        }
+        .footer-about .footer-logo { height: 70px; margin-bottom: 20px; }
         .footer-about p { color: #d1e2f3; font-size: 0.95rem; margin-bottom: 20px; max-width: 400px; }
         .footer-socials a {
             display: inline-flex; align-items: center; justify-content: center;
@@ -183,10 +264,7 @@
         .footer-links li { margin-bottom: 12px; list-style: none; }
         .footer-links a { color: #d1e2f3; text-decoration: none; transition: color 0.3s; display: flex; align-items: center; gap: 8px; }
         .footer-links a:hover { color: var(--secondary); }
-        
-        /* AICI AM ADĂUGAT REGULA PENTRU SĂGEȚI ROȘII */
         .footer-links a i { color: var(--accent); }
-        
         .footer-contact p { color: #d1e2f3; margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; }
         .footer-contact i { color: var(--secondary); margin-top: 5px; }
         .footer-bottom { text-align: center; padding-top: 20px; color: #8faecf; font-size: 0.85rem; }
@@ -196,6 +274,12 @@
         @media (max-width: 992px) {
             .story-top { flex-direction: column; text-align: center; }
             .story-bottom { padding: 25px; }
+            
+            /* Responsive pentru noul card de postare */
+            .post-card { flex-direction: column; }
+            .post-image { min-height: 300px; }
+            .post-content { padding: 30px 20px; }
+
             .footer-container { grid-template-columns: 1fr; text-align: center; }
             .footer-socials, .footer-links a, .footer-contact p { justify-content: center; }
             .footer-about .footer-logo { margin: 0 auto 20px; }
@@ -203,6 +287,7 @@
         @media (max-width: 768px) {
             .navbar { flex-direction: column; gap: 15px; padding: 15px; }
             .nav-links { flex-wrap: wrap; justify-content: center; }
+            .post-content h3 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -259,36 +344,44 @@
         </div>
     </section>
 
+    <!-- ==============================================
+         SECȚIUNEA NOUĂ: POVEȘTI DE SUCCES & MULȚUMIRI 
+         ============================================== -->
+    <section class="success-stories">
+        <h2>Povești de Succes & Mulțumiri</h2>
+        
+        <div class="post-card">
+            <div class="post-image">
+                <!-- AICI SE VA PUNE POZA NOUĂ -->
+                <img src="cae3326c-f802-4a02-932c-5b4f57564f1f.jpg" alt="Cățeluș adoptat de familia Radu din Bistrița Nouă">
+            </div>
+            <div class="post-content">
+                <h3>O nouă viață la Bistrița Nouă</h3>
+                <p>Aducem mii de mulțumiri familiei Radu din Bistrița Nouă pentru grija deosebită oferită cățelușului luat în adopție! ❤️</p>
+                <p>În prima parte a colajului îl puteți vedea la câteva zile după ce a fost preluat, iar celelalte imagini ne arată cât de fericit și relaxat este astăzi în noua sa casă.</p>
+                
+                <div class="post-highlight-box">
+                    <i class="fas fa-gift"></i>
+                    <p>Și nu în ultimul rând, le mulțumim din suflet pentru donarea unei cantități considerabile de BCA, material care ne ajută enorm la construcția noului adăpost!</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dacă mai vrei să adaugi o poveste pe viitor, trebuie doar să copiezi tot div-ul cu clasa "post-card" și să-l pui aici dedesubt -->
+    </section>
+
     <section class="evolution-section">
         <h2>Construim Speranță</h2>
         <p class="subtitle">Aici poți vedea evoluția lucrărilor de la adăpostul nostru. Fiecare etapă finalizată este o victorie pentru animalele care vor găsi un cămin aici.</p>
         
         <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="e1.jpeg" alt="Lucrări adăpost">
-            </div>
-
-            <div class="gallery-item">
-                <img src="e2.jpeg" alt="Lucrări adăpost">
-            </div>
-
-            <div class="gallery-item">
-                <img src="e3.jpeg" alt="Lucrări adăpost">
-            </div>
-            
-            <div class="gallery-item">
-                <img src="e4.jpeg" alt="Lucrări adăpost">
-            </div>
-
-            <div class="gallery-item">
-                <img src="e5.jpeg" alt="Lucrări adăpost">
-            </div>
-
-            <div class="gallery-item">
-                <img src="e6.jpeg" alt="Lucrări adăpost">
-            </div>
-            
-            </div>
+            <div class="gallery-item"><img src="e1.jpeg" alt="Lucrări adăpost"></div>
+            <div class="gallery-item"><img src="e2.jpeg" alt="Lucrări adăpost"></div>
+            <div class="gallery-item"><img src="e3.jpeg" alt="Lucrări adăpost"></div>
+            <div class="gallery-item"><img src="e4.jpeg" alt="Lucrări adăpost"></div>
+            <div class="gallery-item"><img src="e5.jpeg" alt="Lucrări adăpost"></div>
+            <div class="gallery-item"><img src="e6.jpeg" alt="Lucrări adăpost"></div>
+        </div>
     </section>
 
     <footer class="site-footer">
